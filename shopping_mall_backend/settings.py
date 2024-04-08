@@ -26,10 +26,14 @@ SECRET_KEY = 'django-insecure-@js5iw!h3vws1z!h+8f)dq*o8kuxwv4hgg%o36@5)@(te5z3=%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sridhar1508.pythonanywhere.com']
 
 
 # Application definition
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
 
 INSTALLED_APPS = [
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'billing_system',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [

@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 from .views import (
     EmployeeListCreate, EmployeeRetrieveUpdateDestroy,
     ProductListCreate, ProductRetrieveUpdateDestroy,
@@ -10,6 +12,10 @@ from .views import (
 )
 
 urlpatterns = [
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+
+
     path('employees/', EmployeeListCreate.as_view(), name='employee-list-create'),
     path('employees/<int:pk>/', EmployeeRetrieveUpdateDestroy.as_view(), name='employee-retrieve-update-destroy'),
     path('products/', ProductListCreate.as_view(), name='product-list-create'),
